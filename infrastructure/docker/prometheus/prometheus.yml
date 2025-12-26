@@ -1,24 +1,35 @@
+# Prometheus Configuration
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
+  external_labels:
+    cluster: 'ai-marketplace'
+    environment: 'development'
 
+# Scrape configurations
 scrape_configs:
+  # Prometheus itself
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'gateway'
+  # Our microservices (will be added as we build them)
+  - job_name: 'api-gateway'
     static_configs:
-      - targets: ['gateway:8000']
+      - targets: ['host.docker.internal:8000']
+    metrics_path: '/metrics'
 
   - job_name: 'auth-service'
     static_configs:
-      - targets: ['auth:8001']
+      - targets: ['host.docker.internal:8001']
+    metrics_path: '/metrics'
 
   - job_name: 'model-registry'
     static_configs:
-      - targets: ['model-registry:8002']
+      - targets: ['host.docker.internal:8002']
+    metrics_path: '/metrics'
 
   - job_name: 'inference-service'
     static_configs:
-      - targets: ['inference:8003']
+      - targets: ['host.docker.internal:8003']
+    metrics_path: '/metrics'
