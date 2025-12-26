@@ -23,6 +23,12 @@ wheels/
 .installed.cfg
 *.egg
 
+# Poetry
+poetry.lock
+.venv/
+dist/
+*.egg-info/
+
 # Virtual Environment
 venv/
 ENV/
@@ -61,6 +67,8 @@ Thumbs.db
 .coverage
 htmlcov/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # MinIO data
 minio-data/

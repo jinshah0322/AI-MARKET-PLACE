@@ -248,4 +248,5 @@ volumes:
 
 networks:
   ai-marketplace-network:
+    name: ai-marketplace-network
     driver: bridge
